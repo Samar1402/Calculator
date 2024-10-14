@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Calculator = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("0");
   function handleClick(e) {
     let innerTxt = e.target.innerText;
     if (value == 0) {
@@ -13,11 +13,16 @@ const Calculator = () => {
 
   function calculateValue() {
     let ans = eval(value);
-    setValue(ans);
+    setValue(String(ans));
   }
 
   function delLastValue() {
-    let lastValue = Math.floor(value / 10);
+    if (value.length == 1) {
+      setValue(0);
+      return;
+    }
+
+    let lastValue = value.slice(0, -1);
     setValue(lastValue);
   }
 
