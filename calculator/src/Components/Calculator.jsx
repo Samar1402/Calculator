@@ -12,13 +12,13 @@ const Calculator = () => {
   }
 
   function calculateValue() {
-    let ans = eval(value);
+    let ans = eval(value).toFixed(4);
     setValue(String(ans));
   }
 
   function delLastValue() {
     if (value.length == 1) {
-      setValue(0);
+      setValue("0");
       return;
     }
 
